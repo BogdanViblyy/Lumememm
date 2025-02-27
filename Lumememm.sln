@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35219.272
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lumememm", "Lumememm.csproj", "{3C3C4ED5-F37C-488B-A405-CE0A8728700B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3C3C4ED5-F37C-488B-A405-CE0A8728700B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C3C4ED5-F37C-488B-A405-CE0A8728700B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C3C4ED5-F37C-488B-A405-CE0A8728700B}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{3C3C4ED5-F37C-488B-A405-CE0A8728700B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C3C4ED5-F37C-488B-A405-CE0A8728700B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C3C4ED5-F37C-488B-A405-CE0A8728700B}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {56732B75-6120-480E-B721-F327075519F8}
+	EndGlobalSection
+EndGlobal
