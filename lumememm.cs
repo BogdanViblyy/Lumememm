@@ -2,27 +2,33 @@ namespace Lumememm;
 
 public class lumememm : ContentPage
 {
-    private readonly BoxView bucket;
+    private readonly Image tophat, carrot;
     private readonly Frame head, body;
     private readonly Random random;
     private readonly Label actionLabel;
+    private bool isMelted = false;
+
     public lumememm()
     {
         random = new Random();
 
         AbsoluteLayout absoluteLayout = new AbsoluteLayout();
 
-        bucket = new BoxView { Color = Colors.Brown, WidthRequest = 60, HeightRequest = 40, BackgroundColor = Color.FromArgb("#FFFFFF"), CornerRadius = 100 };
-        head = new Frame { WidthRequest = 80, HeightRequest = 80, BorderColor = Colors.Black, BackgroundColor = Color.FromArgb("#FFFFFF"), CornerRadius = 100 };
-        body = new Frame { WidthRequest = 120, HeightRequest = 120, BorderColor = Colors.Black, BackgroundColor = Color.FromArgb("#FFFFFF"), CornerRadius = 100 };
+        tophat = new Image { Source = "tophat.png", WidthRequest = 60, HeightRequest = 40 };
+        carrot = new Image { Source = "dotnet_bot.png", WidthRequest = 30, HeightRequest = 15 };
 
-        AbsoluteLayout.SetLayoutBounds(bucket, new Rect(140, 50, 60, 40));
+        head = new Frame { WidthRequest = 80, HeightRequest = 80, BorderColor = Colors.Black, BackgroundColor = Colors.White, CornerRadius = 100 };
+        body = new Frame { WidthRequest = 120, HeightRequest = 120, BorderColor = Colors.Black, BackgroundColor = Colors.White, CornerRadius = 100 };
+
+        AbsoluteLayout.SetLayoutBounds(tophat, new Rect(140, 50, 60, 40));
         AbsoluteLayout.SetLayoutBounds(head, new Rect(120, 90, 80, 80));
         AbsoluteLayout.SetLayoutBounds(body, new Rect(100, 170, 120, 120));
+        AbsoluteLayout.SetLayoutBounds(carrot, new Rect(150, 120, 30, 15));
 
-        absoluteLayout.Children.Add(bucket);
+        absoluteLayout.Children.Add(tophat);
         absoluteLayout.Children.Add(head);
         absoluteLayout.Children.Add(body);
+        absoluteLayout.Children.Add(carrot);
 
         actionLabel = new Label { Text = "Vali tegevus", FontSize = 18, HorizontalOptions = LayoutOptions.Center };
 
@@ -57,7 +63,17 @@ public class lumememm : ContentPage
 
     private void ToggleVisibility(bool visible)
     {
-        bucket.IsVisible = head.IsVisible = body.IsVisible = visible;
+        if (isMelted && visible)
+        {
+            isMelted = false;
+            tophat.TranslationY = 0;
+            carrot.TranslationY = 0;
+            tophat.Opacity = 1;
+            carrot.Opacity = 1;
+            head.Opacity = 1;
+            body.Opacity = 1;
+        }
+        tophat.IsVisible = carrot.IsVisible = head.IsVisible = body.IsVisible = visible;
         actionLabel.Text = visible ? "Lumememm nähtaval" : "Lumememm peidetud";
     }
 
@@ -70,16 +86,19 @@ public class lumememm : ContentPage
         bool confirm = await DisplayAlert("Värvi muutus", $"Kas soovid muuta värvi? Uus värv: RGB({r}, {g}, {b})", "Jah", "Ei");
         if (confirm)
         {
-            head.BackgroundColor = body.BackgroundColor = Color.FromRgba("#000000");
+            head.BackgroundColor = body.BackgroundColor = Color.FromRgb(r, g, b);
             actionLabel.Text = "Värv muudetud";
         }
     }
 
     private async Task MeltSnowman()
     {
+        isMelted = true;
         for (double i = 1.0; i >= 0; i -= 0.1)
         {
-            bucket.Opacity = head.Opacity = body.Opacity = i;
+            tophat.Opacity = carrot.Opacity = head.Opacity = body.Opacity = i;
+            tophat.TranslationY += 10;
+            carrot.TranslationY += 10;
             await Task.Delay(200);
         }
         actionLabel.Text = "Lumememm sulas ära!";
