@@ -15,20 +15,21 @@ public class lumememm : ContentPage
         AbsoluteLayout absoluteLayout = new AbsoluteLayout();
 
         tophat = new Image { Source = "tophat.png", WidthRequest = 60, HeightRequest = 40 };
-        carrot = new Image { Source = "dotnet_bot.png", WidthRequest = 30, HeightRequest = 15 };
+        carrot = new Image { Source = "carrot.png", WidthRequest = 60, HeightRequest = 30 };
 
         head = new Frame { WidthRequest = 80, HeightRequest = 80, BorderColor = Colors.Black, BackgroundColor = Colors.White, CornerRadius = 100 };
         body = new Frame { WidthRequest = 120, HeightRequest = 120, BorderColor = Colors.Black, BackgroundColor = Colors.White, CornerRadius = 100 };
 
-        AbsoluteLayout.SetLayoutBounds(tophat, new Rect(140, 50, 60, 40));
-        AbsoluteLayout.SetLayoutBounds(head, new Rect(120, 90, 80, 80));
-        AbsoluteLayout.SetLayoutBounds(body, new Rect(100, 170, 120, 120));
+        
+        AbsoluteLayout.SetLayoutBounds(head, new Rect(140, 90, 80, 80));
+        AbsoluteLayout.SetLayoutBounds(body, new Rect(120, 170, 120, 120));
         AbsoluteLayout.SetLayoutBounds(carrot, new Rect(150, 120, 30, 15));
+        AbsoluteLayout.SetLayoutBounds(tophat, new Rect(150, 60, 60, 40));
 
-        absoluteLayout.Children.Add(tophat);
         absoluteLayout.Children.Add(head);
         absoluteLayout.Children.Add(body);
         absoluteLayout.Children.Add(carrot);
+        absoluteLayout.Children.Add(tophat);
 
         actionLabel = new Label { Text = "Vali tegevus", FontSize = 18, HorizontalOptions = LayoutOptions.Center };
 

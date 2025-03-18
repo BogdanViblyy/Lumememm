@@ -57,6 +57,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\carrot.png" />
 	  <None Remove="Resources\Images\tophat.png" />
 	</ItemGroup>
 
